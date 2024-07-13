@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./images/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="./css/all.min.css">
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/main.css">
+    <title>Yummy</title>
+</head>
+
+<body>
+    <!-- home screen koading -->
+    <div class="mainLoading position-fixed top-0 start-0 end-0 bottom-0 bg-black justify-content-center align-items-center">
+        <i class="fa fa-spinner fa-spin fa-10x"></i>
+    </div>
+    <!-- navbar -->
+    <div class="side-nav min-vh-100 position-fixed d-flex top-0">
+        <div class="nav-items d-flex flex-column justify-content-between min-vh-100 p-4">
+            <div class="links">
+                <ul class="list-unstyled overflow-hidden">
+                    <li id="showSearchInputs" class="py-2 position-relative cursor-pointer">Search</li>
+                    <li id="getCategories" class="py-2 position-relative cursor-pointer">Categories</li>
+                    <li id="getArea" class="py-2 position-relative cursor-pointer">Area</li>
+                    <li id="getIngredients" class="py-2 position-relative cursor-pointer">Ingredients</li>
+                    <li id="showContacts" class="py-2 position-relative cursor-pointer">Contact Us</li>
+                </ul>
+            </div>
+            <div class="nav-footer">
+                <div class="icons">
+                    <a href="https://web.facebook.com/?_rdc=1&_rdr"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="https://x.com/home"><i class="fa-brands fa-twitter"></i></a>
+                    <i class="fa-solid fa-globe"></i>
+                </div>
+                <div class="footer">
+                    <p>Ibrahim ahmed <br /> Route Yummy Exam </p>
+                </div>
+            </div>
+        </div>
+        <div class="nav-header d-flex flex-column justify-content-between py-4 text-center px-2 bg-white text-black">
+            <img class="logo" src="./images/logo.png" width="50" alt="Yummy logo">
+            <i class="fa-solid fa-bars openAndClose fa-2x"></i>
+            <div>
+                <i class="fa-solid fa-globe d-block"></i>
+                <i class="fa-solid fa-share-nodes"></i>
+            </div>
+        </div>
+    </div>
+    <!-- search -->
+    <div class="container w-75" id="searchContainer"> </div>
+    <!-- main section -->
+    <div class="min-vh-100 position-relative">
+        <div class="innerLoading top-0 start-0 end-0 bottom-0 justify-content-center align-items-center">
+            <i class="fa fa-spinner fa-spin fa-5x"></i>
+        </div>
+        <div class="container">
+            <div class="row py-5 g-4" id="row">   
+            </div>
+        </div>
+    </div>
+
+
+    <script src="./js/jquery-3.5.1.js"></script>
+    <script src="./js/bootstrap.bundle.min.js"></script>
+    <script src="./js/index.js"></script>
+</body>
+</html>
