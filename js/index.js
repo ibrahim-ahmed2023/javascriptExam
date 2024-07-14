@@ -12,6 +12,7 @@ let repasswordInput = false;
 $(document).ready(() => {
     searchByName("").then(() => {
         $(".mainLoading").fadeOut(500)
+        $("body").css("overflow", "visible")
     })
 })
 
@@ -72,12 +73,17 @@ async function getCategories() {
     rowData.innerHTML = "";
     $(".innerLoading").fadeIn(300);
     searchContainer.innerHTML = "";
-    let categoryResponse = await fetch(`https://www.themealdb.com/api/json/v1/1/categories.php`);
-    // console.log(categoryResponse);
-    categoryResponse = await categoryResponse.json();
-    // console.log(categoryResponse);
-    displayCategories(categoryResponse.categories);
-    $(".innerLoading").fadeOut(300);
+    try{
+        let categoryResponse = await fetch(`https://www.themealdb.com/api/json/v1/1/categories.php`);
+        // console.log(categoryResponse);
+        categoryResponse = await categoryResponse.json();
+        // console.log(categoryResponse);
+        displayCategories(categoryResponse.categories);
+        $(".innerLoading").fadeOut(300);
+    }
+    catch(err){
+        alert('failed to fetch check your api path');
+    }
 
 }
 
@@ -106,12 +112,18 @@ async function getArea() {
     rowData.innerHTML = "";
     $(".innerLoading").fadeIn(300);
     searchContainer.innerHTML = "";
-    let areaRespone = await fetch(`https://www.themealdb.com/api/json/v1/1/list.php?a=list`);
-    // console.log(areaRespone);
-    areaRespone = await areaRespone.json();
-    // console.log(areaRespone)
-    displayArea(areaRespone.meals);
-    $(".innerLoading").fadeOut(300);
+    try{
+        let areaRespone = await fetch(`https://www.themealdb.com/api/json/v1/1/list.php?a=list`);
+        // console.log(areaRespone);
+        areaRespone = await areaRespone.json();
+        // console.log(areaRespone)
+        displayArea(areaRespone.meals);
+        $(".innerLoading").fadeOut(300);
+    }
+    catch(err){
+        alert('failed to fetch check your api path');
+    }
+
 
 }
 
@@ -138,12 +150,18 @@ async function getIngredients() {
     rowData.innerHTML = "";
     $(".innerLoading").fadeIn(300);
     searchContainer.innerHTML = "";
-    let ingredientsRespone = await fetch(`https://www.themealdb.com/api/json/v1/1/list.php?i=list`);
-    // console.log(ingredientsRespone);
-    ingredientsRespone = await ingredientsRespone.json();
-    // console.log(ingredientsRespone);
-    displayIngredients(ingredientsRespone.meals.slice(0, 20));
-    $(".innerLoading").fadeOut(300);
+    try{
+        let ingredientsRespone = await fetch(`https://www.themealdb.com/api/json/v1/1/list.php?i=list`);
+        // console.log(ingredientsRespone);
+        ingredientsRespone = await ingredientsRespone.json();
+        // console.log(ingredientsRespone);
+        displayIngredients(ingredientsRespone.meals.slice(0, 20));
+        $(".innerLoading").fadeOut(300);
+    }
+    catch(err){
+        alert('failed to fetch check your api path');
+    }
+
 }
 
 // display ingrediants
@@ -167,12 +185,18 @@ function displayIngredients(mealArray) {
 async function getCategoryMeals(category) {
     rowData.innerHTML = "";
     $(".innerLoading").fadeIn(300);
-    let getCategoryResponse = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`);
-    // console.log(getCategoryResponse);
-    getCategoryResponse = await getCategoryResponse.json();
-    // console.log(getCategoryResponse);
-    displayMeals(getCategoryResponse.meals.slice(0, 20));
-    $(".innerLoading").fadeOut(300);
+    try{
+        let getCategoryResponse = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`);
+        // console.log(getCategoryResponse);
+        getCategoryResponse = await getCategoryResponse.json();
+        // console.log(getCategoryResponse);
+        displayMeals(getCategoryResponse.meals.slice(0, 20));
+        $(".innerLoading").fadeOut(300);
+    }
+    catch(err){
+        alert('failed to fetch check your api path');
+    }
+
 
 }
 $('#getCategories').click(()=>{
@@ -182,12 +206,18 @@ $('#getCategories').click(()=>{
 async function getAreaMeals(area) {
     rowData.innerHTML = "";
     $(".innerLoading").fadeIn(300);
-    let getAreaResponse = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?a=${area}`);
-    // console.log(getAreaResponse);
-    getAreaResponse = await getAreaResponse.json();
-    // console.log(getAreaResponse);
-    displayMeals(getAreaResponse.meals.slice(0, 20));
-    $(".innerLoading").fadeOut(300);
+    try{
+        let getAreaResponse = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?a=${area}`);
+        // console.log(getAreaResponse);
+        getAreaResponse = await getAreaResponse.json();
+        // console.log(getAreaResponse);
+        displayMeals(getAreaResponse.meals.slice(0, 20));
+        $(".innerLoading").fadeOut(300);
+    }
+    catch(err){
+        alert('failed to fetch check your api path');
+    }
+
 
 }
 $('#getArea').click(()=>{
@@ -198,13 +228,17 @@ $('#getArea').click(()=>{
 async function getIngredientsMeals(ingredients) {
     rowData.innerHTML = "";
     $(".innerLoading").fadeIn(300);
-    let getIngredientsResponse = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingredients}`);
-    // console.log(getIngredientsResponse);
-    getIngredientsResponse = await getIngredientsResponse.json();
-    // console.log(getIngredientsResponse);
-    displayMeals(getIngredientsResponse.meals.slice(0, 20));
-    $(".innerLoading").fadeOut(300);
-
+    try{
+        let getIngredientsResponse = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingredients}`);
+        // console.log(getIngredientsResponse);
+        getIngredientsResponse = await getIngredientsResponse.json();
+        // console.log(getIngredientsResponse);
+        displayMeals(getIngredientsResponse.meals.slice(0, 20));
+        $(".innerLoading").fadeOut(300);
+    }
+    catch(err){
+        alert('failed to fetch check your api path');
+    }
 }
 $('#getIngredients').click(()=>{
     getIngredients(); closeSideNav();
@@ -214,13 +248,17 @@ async function getMealDetails(mealID) {
     rowData.innerHTML = "";
     $(".innerLoading").fadeIn(300);
     searchContainer.innerHTML = "";
-    let getMealDetailsrespone = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealID}`);
-    // console.log(getMealDetailsrespone);
-    getMealDetailsrespone = await getMealDetailsrespone.json();
-    // console.log(getMealDetailsrespone);
-    displayMealDetails(getMealDetailsrespone.meals[0]);
-    $(".innerLoading").fadeOut(300);
-
+    try{
+        let getMealDetailsrespone = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealID}`);
+        // console.log(getMealDetailsrespone);
+        getMealDetailsrespone = await getMealDetailsrespone.json();
+        // console.log(getMealDetailsrespone);
+        displayMealDetails(getMealDetailsrespone.meals[0]);
+        $(".innerLoading").fadeOut(300);
+    }
+    catch(err){
+        alert('failed to fetch check your api path');
+    }
 }
 
 
@@ -287,12 +325,18 @@ async function searchByName(term) {
     closeSideNav();
     rowData.innerHTML = "";
     $(".innerLoading").fadeIn(300);
-    let searchByNameresponse = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${term}`);
-    // console.log(searchByNameresponse);
-    searchByNameresponse = await searchByNameresponse.json();
-    // console.log(searchByNameresponse);
-    searchByNameresponse.meals ? displayMeals(searchByNameresponse.meals) : displayMeals([]);
-    $(".innerLoading").fadeOut(300);
+    try{
+        let searchByNameresponse = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${term}`);
+        // console.log(searchByNameresponse);
+        searchByNameresponse = await searchByNameresponse.json();
+        // console.log(searchByNameresponse);
+        searchByNameresponse.meals ? displayMeals(searchByNameresponse.meals) : displayMeals([]);
+        $(".innerLoading").fadeOut(300);
+    }
+    catch(err){
+        alert('failed to fetch check your api path');
+    }
+
 
 }
 
@@ -301,12 +345,17 @@ async function searchByFLetter(term) {
     rowData.innerHTML = "";
     $(".innerLoading").fadeIn(300);
     term == "" ? term = "a" : "";
-    let seachByLetterResponse = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=${term}`)
-    // console.log(seachByLetterResponse);
-    seachByLetterResponse = await seachByLetterResponse.json()
-    // console.log(seachByLetterResponse);
-    seachByLetterResponse.meals ? displayMeals(seachByLetterResponse.meals) : displayMeals([])
-    $(".innerLoading").fadeOut(300)
+    try{
+        let seachByLetterResponse = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=${term}`)
+        // console.log(seachByLetterResponse);
+        seachByLetterResponse = await seachByLetterResponse.json()
+        // console.log(seachByLetterResponse);
+        seachByLetterResponse.meals ? displayMeals(seachByLetterResponse.meals) : displayMeals([])
+        $(".innerLoading").fadeOut(300);
+    }
+    catch(err){
+        alert('failed to fetch check your api path');
+    }
 
 }
 
